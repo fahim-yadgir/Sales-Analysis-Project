@@ -33,3 +33,27 @@ where Category = 'Furniture';
 select * from sales_analysis_demo
 where Category = 'Technology';
 
+select Product_Name ,sales,Quantity,discount, Profit
+from sales_analysis_demo
+where Profit < 0;
+
+select * from sales_analysis_demo
+where sales between 500 and 1000;
+
+select Customer_Name
+from sales_analysis_demo
+where Customer_Name like 'a%';
+
+select Product_Name
+from sales_analysis_demo
+where Product_Name like '%chair';
+
+select * from sales_analysis_demo
+where Region = 'East';
+
+select * from sales_analysis_demo
+where ship_mode = 'second class';
+
+select * from sales_analysis_demo
+where Ship_Date like '2016%';
+
