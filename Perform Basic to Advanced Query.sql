@@ -154,3 +154,24 @@ from sales_analysis_demo
 group by Category
 having sum(sales)>5000
 order by Category desc;
+
+select state,count(order_id)as total_order
+from sales_analysis_demo
+group by state
+having count(order_id)>10;
+
+select Customer_Name,sum(sales)as spending_money
+from sales_analysis_demo
+group by Customer_Name
+having sum(sales)>3000;
+
+select region,round(avg(profit),2)as avg_profit
+from sales_analysis_demo
+group by region
+having avg(profit)>20;
+
+select product_name,count(Product_Name)as sold_product
+from sales_analysis_demo
+group by product_name
+having count(Product_Name)>1;
+
