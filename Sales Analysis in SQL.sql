@@ -39,8 +39,6 @@ rename column `Sub-Category` to Sub_Category;
 alter table sales_analysis_demo
 rename column `Product Name` to Product_Name; 
 
-select * from sales_analysis_demo;
-
 SET SQL_SAFE_UPDATES = 0;
 
 update sales_analysis_demo

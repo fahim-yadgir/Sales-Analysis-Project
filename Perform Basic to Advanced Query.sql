@@ -236,3 +236,8 @@ from sales_analysis_demo;
 select 
 max(datediff(ship_date,order_date))as max_shipping_time
 from sales_analysis_demo;
+
+update sales_analysis_demo
+set
+	Customer_Name = upper(Customer_Name);
+    
