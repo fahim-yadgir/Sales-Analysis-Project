@@ -57,3 +57,25 @@ where ship_mode = 'second class';
 select * from sales_analysis_demo
 where Ship_Date like '2016%';
 
+select * from sales_analysis_demo
+order by Sales desc;
+
+select * from sales_analysis_demo
+order by profit asc;
+
+select * from sales_analysis_demo
+order by sales desc
+limit 20;
+
+select *,
+	rank() over(order by sales desc)as top_20
+from sales_analysis_demo
+limit 20;
+
+select profit
+from sales_analysis_demo
+order by Profit asc 
+limit 10;
+
+select * from sales_analysis_demo
+order by Quantity desc;
