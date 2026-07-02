@@ -79,3 +79,33 @@ limit 10;
 
 select * from sales_analysis_demo
 order by Quantity desc;
+
+select sum(sales)as total_sales
+from sales_analysis_demo;
+
+select sum(profit)as total_profit
+from sales_analysis_demo;
+
+select avg(sales)as avg_sales
+from sales_analysis_demo;
+
+select max(profit)as max_profit
+from sales_analysis_demo;
+
+select min(profit)as min_profit
+from sales_analysis_demo;
+
+select sum(quantity)as total_quantity
+from sales_analysis_demo;
+
+select count(order_id)as total_orders
+from sales_analysis_demo;
+
+select distinct count(Customer_Name)
+from sales_analysis_demo;
+
+select avg(discount)as avg_discount
+from sales_analysis_demo;
+
+select max(sales)as max_sales
+from sales_analysis_demo;
