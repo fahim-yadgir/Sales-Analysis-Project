@@ -175,3 +175,64 @@ from sales_analysis_demo
 group by product_name
 having count(Product_Name)>1;
 
+select 
+	year(order_date)as years,
+    count(order_date)as count_years
+from sales_analysis_demo
+group by year(order_Date);
+
+select 
+	month(order_date)as mothns,
+    count(order_date)as count_months
+from sales_analysis_demo
+group by month(order_date)
+order by month(order_date);
+
+select 
+	day(order_Date)as days,
+    count(order_Date)as total_days
+from sales_analysis_demo
+group by day(order_date)
+order by day(order_Date);
+
+select 
+	month(order_date),
+    round(sum(sales),2)as monthly_sales
+from sales_analysis_demo
+group by month(order_date)
+order by month(order_Date);
+
+select 
+	year(order_date)as years,
+    round(sum(profit),2)as yearly_profit
+from sales_analysis_demo
+group by year(order_date)
+order by year(order_date);
+
+select
+	quarter(order_date)as quarters,
+    round(sum(sales),2)as total_sales
+from sales_analysis_demo
+group by quarter(order_date)
+order by quarter(order_date);
+
+select
+	weekday(order_date)as weekend_orders,
+    round(count(order_date),2)as total_orders
+from sales_analysis_demo
+group by weekday(order_date)
+order by weekday(order_date);
+
+select order_id,
+		order_Date,
+        ship_date,
+        datediff(ship_date,order_date)as shipping_time
+from sales_analysis_demo;
+
+select 
+avg(datediff(ship_date,order_Date))as avg_shipping_time
+from sales_analysis_demo;
+
+select 
+max(datediff(ship_date,order_date))as max_shipping_time
+from sales_analysis_demo;
