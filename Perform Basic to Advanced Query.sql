@@ -256,4 +256,6 @@ from sales_analysis_demo
 where Order_date between '2014-01-01' and '2015-01-01';
 
 
-		
+select *,
+	sum(Profit) over(order by Row_id)as cumulative_sum
+from sales_analysis_demo;
