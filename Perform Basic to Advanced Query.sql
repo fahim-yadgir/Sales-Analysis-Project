@@ -241,3 +241,19 @@ update sales_analysis_demo
 set
 	Customer_Name = upper(Customer_Name);
     
+select * from sales_analysis_demo
+where Postal_code = 42420;
+
+select Row_id,
+		Order_ID,
+        Ship_Date,
+        Customer_Name,
+        Product_ID,
+        Quantity,
+        Discount,
+        Profit
+from sales_analysis_demo
+where Order_date between '2014-01-01' and '2015-01-01';
+
+
+		
