@@ -296,4 +296,30 @@ when Quantity >= 7 then 'High'
 end Quantity_level
 from sales_analysis_demo;
 
+select Customer_Name,
+		Sales as above_avg_sales
+from sales_analysis_demo
+where sales > (select avg(sales)from sales_analysis_demo);
+
+select Product_Name,
+		profit
+from sales_analysis_demo 
+where profit = (select max(profit)from sales_analysis_demo);
+
+select state , sales
+from sales_analysis_demo
+where sales > (select avg(sales)from sales_analysis_demo);
+
+select product_name,discount
+from sales_analysis_demo
+where discount = (select min(discount) from sales_analysis_demo);
+
+select product_name,sales as second_highest_sale
+from sales_analysis_demo
+where sales = (select max(sales)from sales_analysis_demo
+				where sales < (select max(sales)from sales_analysis_demo));
+
+select sales from sales_analysis_demo
+order by sales desc
+limit 2 ;
 
