@@ -323,3 +323,51 @@ select sales from sales_analysis_demo
 order by sales desc
 limit 2 ;
 
+select product_name,
+		round(sum(sales),2)as rank_sales,
+	rank() over(order by sum(sales) desc)as sales_rank
+from sales_analysis_demo
+group by product_name;
+
+select Customer_Name ,
+		round(sum(profit),2)as total_profit,
+        dense_rank() over(order by sum(profit) desc)as dens_rank
+from sales_analysis_demo
+group by Customer_Name;
+
+select state,
+	row_number() over(order by profit desc)as state_rank
+from sales_analysis_demo;
+
+select Customer_Name,
+		Country,
+        sales,
+        round(sum(sales) over(order by Row_id desc),2)as running_total_sales
+from sales_analysis_demo;
+
+select Customer_Name,
+		Country,
+        sales,
+        round(sum(profit) over(order by row_id),2)as runnig_total
+from sales_analysis_demo;
+
+select Customer_Name,
+		Country,
+        sales,
+        round(avg(sales) over(order by row_id desc),2)as moving_avg
+from sales_analysis_demo;
+
+select * 
+from (
+	select category,
+			product_name,
+            round(sum(sales),2)as total_sales,
+            dense_rank() over(partition by category order by sum(sales) desc)as sales_rank
+from sales_analysis_demo
+group by category,product_name
+)
+as rankedProducts
+where sales_rank <= 3
+order by category ,sales_rank;
+            
+)
