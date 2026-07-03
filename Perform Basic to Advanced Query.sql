@@ -259,3 +259,41 @@ where Order_date between '2014-01-01' and '2015-01-01';
 select *,
 	sum(Profit) over(order by Row_id)as cumulative_sum
 from sales_analysis_demo;
+
+select *,
+case when Profit > 0 then 'profit' else 'Loss' end Profit_and_loss
+from sales_analysis_demo;
+
+select Product_Name,sales,Discount,
+case when sales < 100 then 'Low' 
+when sales between 100 and 500 then 'Medium'
+when sales > 500 then 'High'
+end Sales_category
+from sales_analysis_demo;
+
+select Product_Name,
+		Sales,
+        Quantity,
+        Discount,
+        Profit
+        ,
+case 
+		when Discount < .0 then 'No Discount' 
+        when Discount <= .3 then 'Low Discount'
+        when Discount > .3 then 'High Discount'
+        end Discount_status
+from sales_analysis_demo;
+
+select Product_Name,
+		Sales,
+        Quantity,
+        Discount,
+        Profit,
+case 
+when Quantity < 3 then 'Low' 
+when Quantity < 7 then 'Medium'
+when Quantity >= 7 then 'High'
+end Quantity_level
+from sales_analysis_demo;
+
+
