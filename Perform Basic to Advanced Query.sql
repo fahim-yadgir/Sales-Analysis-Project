@@ -358,16 +358,12 @@ select Customer_Name,
 from sales_analysis_demo;
 
 select * 
-from (
-	select category,
-			product_name,
-            round(sum(sales),2)as total_sales,
-            dense_rank() over(partition by category order by sum(sales) desc)as sales_rank
-from sales_analysis_demo
-group by category,product_name
+from(
+	select product_name,category,sum(sales)as total_sales,
+    dense_rank() over(partition by category order by sum(sales) desc)as top_3
+    from sales_analysis_demo
+    group by product_name,category
 )
-as rankedProducts
-where sales_rank <= 3
-order by category ,sales_rank;
-            
-)
+as rank_table
+where top_3 <= 3
+order by category,top_3;
