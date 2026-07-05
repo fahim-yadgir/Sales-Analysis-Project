@@ -417,3 +417,11 @@ select *,
 sum(profit) over(order by row_id desc)as total_loss
 from sales_analysis_demo
 where profit < 0;
+
+select customer_name , round(sum(profit),2)as sum_profit
+from sales_analysis_demo
+group by customer_name
+order by sum_profit desc;
+
+select * from sales_analysis_demo
+where customer_name = 'TRACY BLUMSTEIN';
