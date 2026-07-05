@@ -394,3 +394,26 @@ from(select Row_id,
 )as sales_cat
 where sales_category <= 3
 order by Ship_Mode,sales_category;
+
+select Row_id,
+		Order_ID,
+        Customer_id,
+        Customer_Name,
+        Region,
+		Product_ID,
+        Sales,
+        Quantity,
+        Discount,
+        Profit
+from sales_analysis_demo
+where Profit < 0;
+
+select region,round(sum(profit),2)as total_loss
+from sales_analysis_demo
+where profit < 0
+group by region;
+
+select *,
+sum(profit) over(order by row_id desc)as total_loss
+from sales_analysis_demo
+where profit < 0;
