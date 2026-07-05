@@ -425,3 +425,10 @@ order by sum_profit desc;
 
 select * from sales_analysis_demo
 where customer_name = 'TRACY BLUMSTEIN';
+
+select max(sales)
+from sales_analysis_demo
+where profit > 0;
+
+
+
