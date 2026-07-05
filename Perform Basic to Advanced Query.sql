@@ -367,3 +367,13 @@ from(
 as rank_table
 where top_3 <= 3
 order by category,top_3;
+
+select * from sales_analysis_demo;
+
+select order_date,ship_date,Discount,profit,quantity
+from sales_analysis_demo
+where order_date between '2014-01-01' and '2015-01-01' and Discount = 0.0;
+
+select order_date,
+month(Order_date)
+from sales_analysis_demo;
