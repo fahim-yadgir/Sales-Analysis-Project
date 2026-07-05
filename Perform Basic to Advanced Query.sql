@@ -430,5 +430,14 @@ select max(sales)
 from sales_analysis_demo
 where profit > 0;
 
+select state,sum(profit)as profits
+from sales_analysis_demo
+group by state
+order by profits desc
+limit 1;
 
-
+select state,sum(profit)as profits
+from sales_analysis_demo
+group by state
+order by profits
+limit 1;
