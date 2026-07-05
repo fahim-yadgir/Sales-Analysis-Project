@@ -374,6 +374,23 @@ select order_date,ship_date,Discount,profit,quantity
 from sales_analysis_demo
 where order_date between '2014-01-01' and '2015-01-01' and Discount = 0.0;
 
-select order_date,
+select 
 month(Order_date)
 from sales_analysis_demo;
+
+select *
+from(select Row_id,
+		Order_ID,
+        Ship_mode,
+        Customer_Name,
+        Product_ID,
+        Product_Name,
+        Sales,
+        Quantity,
+        Discount,
+        Profit,
+        dense_rank() over(partition by Ship_mode order by Sales desc)as sales_category
+        from sales_analysis_demo
+)as sales_cat
+where sales_category <= 3
+order by Ship_Mode,sales_category;
