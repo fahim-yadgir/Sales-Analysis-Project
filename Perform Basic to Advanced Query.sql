@@ -444,4 +444,4 @@ limit 1;
 
 select order_id , order_date,customer_name,city,profit
 from sales_analysis_demo
-where order_date between '2015-01-01' and '2016-12-30';
+where order_date between '2015-01-01' and '2016-12-30' and profit < 0;
