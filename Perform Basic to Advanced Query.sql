@@ -442,6 +442,7 @@ group by state
 order by profits
 limit 1;
 
-select order_id , order_date,customer_name,city,profit
+select order_id , order_date,customer_name,city,profit,
+round(sum(Profit) over (order by order_id),2)as running_profit
 from sales_analysis_demo
-where order_date between '2015-01-01' and '2016-12-30' and profit < 0;
+where order_date between '2015-01-01' and '2016-12-30';
