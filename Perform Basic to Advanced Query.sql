@@ -451,6 +451,9 @@ select * from sales_analysis_demo;
 
 create view `2014_to_2015_runnig_sales` as
 select * ,
-sum(saels) over(order by order_date)
+sum(sales) over(order by order_date)
 from sales_analysis_demo
-where order_date between '2014-12-30' and '2015-12-30';
+where order_date between '2014-01-30' and '2015-12-30';
+
+drop view `2014_to_2015_runnig_sales`;
+select * from `2014_to_2015_runnig_sales`;
