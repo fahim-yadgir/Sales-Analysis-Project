@@ -457,3 +457,19 @@ where order_date between '2014-01-30' and '2015-12-30';
 
 drop view `2014_to_2015_runnig_sales`;
 select * from `2014_to_2015_runnig_sales`;
+
+delimiter $$
+create procedure Update_Quantity
+(
+in r_id int,
+in quntity int
+)
+begin 
+update sales_analysis_demo
+set Quantity = quntity,
+	Profit = Quantity * Sales
+where Row_id = r_id;
+select * from sales_analysis_demo;
+end $$
+
+call Update_Quantity(1,3);
