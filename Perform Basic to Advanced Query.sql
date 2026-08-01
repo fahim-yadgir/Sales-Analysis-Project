@@ -473,3 +473,19 @@ select * from sales_analysis_demo;
 end $$
 
 call Update_Quantity(1,3);
+
+delimiter $$
+create procedure Change_city(
+in r_id bigint,
+in s_city varchar
+)
+begin 
+update sales_analysis_demo
+set City = s_city
+where Row_id = r_id;
+select * from sales_analysis_demo;
+end $$
+
+
+
+
