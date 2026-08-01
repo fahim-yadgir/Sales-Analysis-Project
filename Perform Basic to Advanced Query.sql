@@ -490,3 +490,19 @@ end $$
 
 call Change_city(1,'Los Angeles');
 
+drop procedure Update_category;
+
+delimiter $$
+create procedure Update_category
+(
+in r_id bigint,
+in s_cat varchar(100)
+)
+begin 
+update sales_analysis_demo
+set Category = s_cat
+where Row_id = r_id;
+select Row_id,Category from sales_analysis_demo;
+end $$
+
+call Update_category(1,"Office Supplies")
