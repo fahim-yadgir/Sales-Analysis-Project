@@ -475,9 +475,10 @@ end $$
 call Update_Quantity(1,3);
 
 delimiter $$
-create procedure Change_city(
+create procedure Change_city
+(
 in r_id bigint,
-in s_city varchar
+in s_city varchar(100)
 )
 begin 
 update sales_analysis_demo
@@ -487,5 +488,5 @@ select * from sales_analysis_demo;
 end $$
 
 
-
+call Change_city(1,'Los Angeles');
 
