@@ -516,9 +516,12 @@ order by Order_Date asc
 
 select * from `2015_to_2016`;
 
+drop view second_class_mode;
+
 create view second_class_mode as
 (
-select * from sales_analysis_demo
+select * ,round(sum(sales)over(order by Row_id),2)
+from sales_analysis_demo
 where Ship_Mode = 'Second Class'
 )
 
