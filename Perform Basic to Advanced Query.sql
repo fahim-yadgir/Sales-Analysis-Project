@@ -526,3 +526,25 @@ where Ship_Mode = 'Second Class'
 )
 
 select * from second_class_mode;
+
+select Ship_Mode , count(*)as total_count
+from sales_analysis_demo
+group by Ship_Mode;
+
+create view first_class_mode as
+(
+select * ,round(sum(sales)over(order by Row_id),2)
+from sales_analysis_demo
+where Ship_Mode = 'First Class'
+)
+
+select * from first_class_mode;
+
+create view Standard_class_mode as
+(
+select * ,round(sum(sales)over(order by Row_id),2)
+from sales_analysis_demo
+where Ship_Mode = 'Standard Class'
+)
+
+select * from Standard_class_mode;
