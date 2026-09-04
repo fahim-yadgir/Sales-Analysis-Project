@@ -515,3 +515,11 @@ order by Order_Date asc
 )
 
 select * from `2015_to_2016`;
+
+create view second_class_mode as
+(
+select * from sales_analysis_demo
+where Ship_Mode = 'Second Class'
+)
+
+select * from second_class_mode;
