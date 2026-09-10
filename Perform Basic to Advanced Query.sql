@@ -548,3 +548,29 @@ where Ship_Mode = 'Standard Class'
 )
 
 select * from Standard_class_mode;
+
+select customer_name , count(*)as total_count
+from sales_analysis_demo
+group by customer_name
+order by total_count desc;
+
+drop procedure change_customer_name;
+
+delimiter $$
+create procedure change_customer_name
+(
+in c_row_id int,
+in c_name text
+)
+begin 
+update sales_analysis_demo
+set Customer_Name = c_name
+where Row_id = c_row_id;
+select * from sales_analysis_demo;
+end $$ 
+delimiter ;
+
+start transaction;
+call change_customer_name(1,"Fahim Yadgir");
+
+rollback;
