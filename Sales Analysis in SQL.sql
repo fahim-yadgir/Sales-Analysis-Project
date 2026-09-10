@@ -1,9 +1,11 @@
 create database sales;
 use sales;
 
-select * from `sales analysis demo`;
+drop table sales_analysis_demo;
 
-alter table `sales analysis demo`
+select * from `for sql practice`;
+
+alter table `for sql practice`
 rename sales_analysis_demo;
 
 alter table sales_analysis_demo
