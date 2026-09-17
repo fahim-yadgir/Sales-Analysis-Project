@@ -574,3 +574,20 @@ start transaction;
 call change_customer_name(1,"Fahim Yadgir");
 
 rollback;
+
+delimiter $$
+create procedure change_state
+(
+in r_id int,
+in s_state text
+)
+update sales_analysis_demo
+set State = s_state
+where Row_id = r_id;
+select *from sales_analysis_demo;
+end $$
+delimiter ;
+
+start transaction;
+call change_state(1,"Florida");
+commit ;

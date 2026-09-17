@@ -1,8 +1,6 @@
 create database sales;
 use sales;
 
-drop table sales_analysis_demo;
-
 select * from `for sql practice`;
 
 alter table `for sql practice`
