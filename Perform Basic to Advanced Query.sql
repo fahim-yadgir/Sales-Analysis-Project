@@ -507,11 +507,13 @@ end $$
 
 call Update_category(1,"Office Supplies");
 
+drop view `2015_to_2016`;
+
 create view `2015_to_2016` as
 (
-select * from sales_analysis_demo
+select * ,sum(Profit) over(order by Ship_Date)as Runnig_profit from sales_analysis_demo
 where Order_Date between '2015-01-01' and '2016-12-31'
-order by Order_Date asc
+order by Ship_Date asc
 )
 
 select * from `2015_to_2016`;
@@ -589,5 +591,15 @@ end $$
 delimiter ;
 
 start transaction;
-call change_state(1,"Florida");
+call change_state(7,"Florida");
 commit ;
+
+select Category , Sub_Category,Product_Name  ,sum(Profit)as total_profit
+from sales_analysis_demo
+group by Category , Product_Name ,Sub_Category
+order by  Category;
+
+select * from `2015_to_2016`;
+
+select sum(profit)as total_profit
+from sales_analysis_demo;
