@@ -603,3 +603,11 @@ select * from `2015_to_2016`;
 
 select sum(profit)as total_profit
 from sales_analysis_demo;
+
+select sub.state , sub.profit
+from
+(
+	select state , profit , row_number() over(partition by state order by profit desc)as top_profit
+    from sales_analysis_demo
+)as sub
+where top_profit <=3;
